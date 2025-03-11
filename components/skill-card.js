@@ -5,31 +5,59 @@ class SkillCard extends HTMLElement {
 
         const skill = this.getAttribute('skill');
         const level = this.getAttribute('level');
+        const percentage = this.getLevelPercentage(level);
 
         this.shadowRoot.innerHTML = `
             <style>
-                .card {
-                    background: var(--card-bg, #f8f9fa);
-                    padding: 0.625rem 0.938rem;
-                    border-radius: 0.5rem;
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                    text-align: center;
-                    font-family: Arial, sans-serif;
-                }
-                .skill {
-                    font-size: 1.2rem
+                p {
+                    font-size: 1rem
                     font-weight: bold;
+                    margin-bottom: 0.313rem;
+                    display: flex;
+                    justify-content: left;
+                    gap: 0.5rem;
                 }
-                .level {
-                    font-size: 1rem;
-                    color: gray;
+                .icon {
+                    color: white;
+                    width: 1.12rem
                 }
+
+                .progress-bar {
+                    height: 0.25rem;
+                    background: var(--primary-color);
+                    width: ${percentage}%;
+                    transition: width 0.5s ease-in-out;
+                }
+                    @media (max-width: 480px) {
+                        p {
+                            font-size: small;
+                        }
+                        .skill-container {
+                            grid-template-columns: repeat(1, 1fr);
+                        }
+                    }
             </style>
             <article>
-                <p class="skill">${skill}</p>
-                <p class="level">${level}</p>
+                <p>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg> 
+                    ${skill}
+                </p>
+                <section>
+                    <div class="progress-bar" />
+                </section>
             </article>
         `;
+    }
+
+    getLevelPercentage(level) {
+        const levels = {
+            "Beginner": 25,
+            "Intermidiate": 50,
+            "Advanced": 75,
+            "Expert": 100
+        };
+
+        return levels[level] ?? 0;
     }
 };
 
