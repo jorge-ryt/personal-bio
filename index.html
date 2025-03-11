@@ -18,14 +18,14 @@
 
     <!-- Lazy load script -->
     <script defer src="components/skill-card.js"></script>
-
 </head>
 <body>
     <header>
+        <img src="images/profile-pic.jpg" alt="Jorge Gomez Profile Picture" class="profile-pic" loading="lazy" />
         <h1>Jorge Gomez</h1>
         <strong>Software Developer | JavaScript | React | NodeJS | .Net</strong>
     </header>
-    <main>
+    <main class="wrapper">
         <section id="bio">
             <h2>About me</h2>
             <p>Hello, I'm Jorge Gomez, a well-qualifed Software Developer, specialized on Frontend development, familiar with a wide rage of programming utilies and languages.
@@ -36,8 +36,19 @@
         <section id="skills">
             <h2>Skills</h2>
             <section class="skills-container">
+                <skill-card skill="HTML" level="Expert"></skill-card>
+                <skill-card skill="CSS" level="Expert"></skill-card>
                 <skill-card skill="JavaScript" level="Expert"></skill-card>
-                <skill-card skill="TypeScript" level="Expert"></skill-card>
+                <skill-card skill="TypeScript" level="Advanced"></skill-card>
+                <skill-card skill="Node" level="Intermidiate"></skill-card>
+                <skill-card skill="Vue" level="Advanced"></skill-card>
+                <skill-card skill="React Native" level="Intermidiate"></skill-card>
+                <skill-card skill=".Net" level="Beginner"></skill-card>
+                <skill-card skill="Java" level="Beginner"></skill-card>
+                <skill-card skill="MongoDB" level="Intermidiate"></skill-card>
+                <skill-card skill="SQL" level="Beginner"></skill-card>
+                <skill-card skill="Unit Testing" level="Intermidiate"></skill-card>
+                <skill-card skill="E2E Testing" level="Beginner"></skill-card>
             </section>
         </section>
     </main>
